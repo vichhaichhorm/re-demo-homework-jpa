@@ -26,15 +26,15 @@ pipeline {
             // Send Telegram notification on success
             script {
                 def message = """
-                ✅ *Build Success*
-                Project: ${env.JOB_NAME}
-                Build: #${env.BUILD_NUMBER}
-                Branch: main
-                Status: SUCCESS
-                Duration: ${currentBuild.durationString}
-                Triggered by: ${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')?.userId?.getAt(0) ?: 'System'}
-                Build URL: ${env.BUILD_URL}
-                """
+✅ *Build Success*
+Project: ${env.JOB_NAME}
+Build: #${env.BUILD_NUMBER}
+Branch: main
+Status: SUCCESS
+Duration: ${currentBuild.durationString}
+Triggered by: ${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')?.userId?.getAt(0) ?: 'System'}
+Build URL: ${env.BUILD_URL}
+"""
                 sh """
                 curl -s -X POST https://api.telegram.org/bot8131016042:AAHKIXlY3VUMP_GDpZ6euV_-OvoqJJtMkhs/sendMessage \
                 -d chat_id=1160863616 \
@@ -48,15 +48,15 @@ pipeline {
             // Send Telegram notification on failure
             script {
                 def message = """
-                ❌ *Build Failed*
-                Project: ${env.JOB_NAME}
-                Build: #${env.BUILD_NUMBER}
-                Branch: main
-                Status: FAILED
-                Duration: ${currentBuild.durationString}
-                Triggered by: ${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')?.userId?.getAt(0) ?: 'System'}
-                Build URL: ${env.BUILD_URL}
-                """
+❌ *Build Failed*
+Project: ${env.JOB_NAME}
+Build: #${env.BUILD_NUMBER}
+Branch: main
+Status: FAILED
+Duration: ${currentBuild.durationString}
+Triggered by: ${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')?.userId?.getAt(0) ?: 'System'}
+Build URL: ${env.BUILD_URL}
+"""
                 sh """
                 curl -s -X POST https://api.telegram.org/bot8131016042:AAHKIXlY3VUMP_GDpZ6euV_-OvoqJJtMkhs/sendMessage \
                 -d chat_id=1160863616 \
